@@ -62,6 +62,7 @@ import thingi10k
 
 from adversaries.degenerate import Degenerate
 from adversaries.disconnected import Disconnected
+from adversaries.fused import Fused
 from adversaries.faceswap import FaceSwap
 from adversaries.jitter import Jitter
 from adversaries.rigid import RigidTransform
@@ -115,6 +116,12 @@ def default_adversaries():
     input-sanitizing, per-component geometry detectors and are pure stress tests
     of that hardening.
 
+    ``fused`` joins the device to one larger benign carrier with a Boolean union.
+    The carrier comes from the train benign set, is scaled and rotated, and only
+    partly overlaps the device, so the two become a single connected component
+    that still prints as one object. Unlike ``disconnected``, per-component
+    detectors can no longer separate the device from what surrounds it.
+
     ``remesh`` is intentionally omitted: it is parked on a separate draft branch
     until a gpytoolbox release ships a better isotropic remesher.
     """
@@ -125,6 +132,7 @@ def default_adversaries():
         ("faceswap", FaceSwap()),
         ("degenerate", Degenerate()),
         ("disconnected", Disconnected(benign_dir=os.path.join(DATA_ROOT, "train", "benign"))),
+        ("fused", Fused(carrier_dir=os.path.join(DATA_ROOT, "train", "benign"))),
     ]
 
 

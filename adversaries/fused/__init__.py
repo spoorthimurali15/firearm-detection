@@ -1,0 +1,1 @@
+from .adversary import Fused
