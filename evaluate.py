@@ -11,6 +11,7 @@ from detectors.file_hash import FileHash
 from detectors.laplacian_spectrum import LaplacianSpectrum
 from detectors.pointnet import PointNet
 from detectors.image_classifier import ImageClassifier
+from detectors.voxunet import VoxUNet
 # Deferred: the PSO solver builds and runs on macOS, but it runs a full
 # 1500-particle x 200-iteration swarm per mesh (~2-3 min/shape, ~9h for the
 # eval split), so it's left out of routine runs for now.
@@ -24,6 +25,7 @@ DETECTORS = [
     ("laplacian_spectrum", LaplacianSpectrum),
     ("pointnet", PointNet),
     ("image_classifier", ImageClassifier),
+    ("voxunet", VoxUNet),
     # ("pso", ParticleSwarm),  # deferred: too slow for routine runs (see import above)
 ]
 
